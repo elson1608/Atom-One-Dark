@@ -6,6 +6,10 @@
   "engines": {
     "vscode": "^1.92.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elson1608/Atom-One-Dark.git"
+  },
   "categories": [
     "Themes"
   ],
