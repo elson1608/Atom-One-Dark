@@ -1,0 +1,34 @@
+{
+  "name": "atom-one-dark",
+  "displayName": "Atom One Dark",
+  "publisher": "elson1608",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "themes": [
+      {
+        "label": "Atom One Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/atom-one-dark.json"
+      }
+    ],
+    "configurationDefaults": {
+      "editor.fontFamily": "JetBrains Mono",
+      "editor.fontLigatures": true,
+      "terminal.integrated.fontFamily": "JetBrains Mono",
+      "debug.console.fontFamily": "JetBrains Mono"
+    },
+    "commands": [
+      {
+        "command": "theme.applyRecommendedFont",
+        "title": "Apply Theme's Recommended Font"
+      }
+    ]
+  }
+}
