@@ -178,6 +178,7 @@
                 "constant.language.boolean.typst",
                 "source.typst markup.math.typst meta.expr.call.typst entity.name.function.hash.typst",
                 "source.typst markup.math.typst entity.name.function.hash.typst",
+                "keyword.codetag.notation.python"
             ],
             "settings": {
                 "foreground": "#c778dc",
@@ -272,7 +273,6 @@
                 "meta.math.block.tex",
                 "meta.function.environment.math.latex",
                 "support.class.math.block.environment.latex",
-                "keyword.codetag.notation.python"
             ],
             "settings": {
                 "foreground": "#ce9057"
