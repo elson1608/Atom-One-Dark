@@ -141,10 +141,10 @@
         "terminal.ansiCyan": "#56b6c2"
     },
     "semanticTokenColors": {
-        "property": "#aab2be", // img.shape
-        "module.typeHint": "#e4c17b", // 'np' in annotations
-        "type.typeHint": "#e4c17b", // 'ndarray', 'int', etc. in annotations
-        "class.typeHint": "#e4c17b", // class names in annotations
+        "property": "#aab2be",
+        "module.typeHint": "#e4c17b",
+        "type.typeHint": "#e4c17b",
+        "class.typeHint": "#e4c17b",
         "typeParameter.typeHint": "#c679dc",
         "class.typeHint.builtin": "#56B6C2",
         "parameter.declaration": "#ce9057",
@@ -277,13 +277,12 @@
         {
             "name": "Parameters / JSON constants / Math blocks / Codetags",
             "scope": [
-                // "meta.function-call.arguments.python",
                 "variable.parameter.function-call.python",
                 "constant.language.json.comments",
                 "constant.language.json",
                 "meta.math.block.tex",
                 "meta.function.environment.math.latex",
-                "support.class.math.block.environment.latex",
+                "support.class.math.block.environment.latex"
             ],
             "settings": {
                 "foreground": "#ce9057"
@@ -348,7 +347,6 @@
                 "foreground": "#e16c74"
             }
         },
-        /* TeX / LaTeX extras */
         {
             "name": "TeX quoted string punctuation",
             "scope": [
@@ -408,7 +406,6 @@
                 "foreground": "#194ef3"
             }
         },
-        /* Numbers (from your top-level 'numbers' key) */
         {
             "name": "Numbers",
             "scope": [
