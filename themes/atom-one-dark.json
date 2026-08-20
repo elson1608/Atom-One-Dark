@@ -163,6 +163,8 @@
         {
             "name": "Keywords / Control / Storage / Operators (core)",
             "scope": [
+                "keyword.other",
+                "storage.modifier.sql",
                 "keyword.control",
                 "storage.type",
                 "keyword.operator.accessor.typst",
