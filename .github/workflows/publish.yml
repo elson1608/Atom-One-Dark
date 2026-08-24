@@ -22,9 +22,6 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: Package extension
         run: npx @vscode/vsce package --out atom-one-dark.vsix
 
