@@ -13,7 +13,6 @@ jobs:
 
     permissions:
       contents: read
-      id-token: write
 
     steps:
       - name: Checkout
@@ -31,4 +30,4 @@ jobs:
         run: npx ovsx publish atom-one-dark.vsix -p "${{ secrets.OVSX_PAT }}"
 
       - name: Publish to VS Code Marketplace
-        run: npx @vscode/vsce publish --packagePath atom-one-dark.vsix --oidc
+        run: npx @vscode/vsce publish --packagePath atom-one-dark.vsix -p "${{ secrets.VSCE_PAT }}"
