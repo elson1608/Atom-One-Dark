@@ -1,0 +1,35 @@
+name: Publish Extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Package extension
+        run: npx @vscode/vsce package --out atom-one-dark.vsix
+
+      - name: Publish to Open VSX
+        run: npx ovsx publish atom-one-dark.vsix -p "${{ secrets.OVSX_PAT }}"
+
+      - name: Publish to VS Code Marketplace
+        run: npx @vscode/vsce publish --packagePath atom-one-dark.vsix --oidc

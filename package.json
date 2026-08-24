@@ -1,38 +1,42 @@
 {
-  "name": "atom-one-dark",
-  "displayName": "Atom One Dark for VSCode",
-  "publisher": "elson1608",
-  "version": "0.3.0",
-  "engines": {
-    "vscode": "^1.92.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/elson1608/Atom-One-Dark.git"
-  },
-  "categories": [
-    "Themes"
-  ],
-  "main": "./extension.js",
-  "contributes": {
-    "themes": [
-      {
-        "label": "Atom One Dark",
-        "uiTheme": "vs-dark",
-        "path": "./themes/atom-one-dark.json"
-      }
-    ],
-    "configurationDefaults": {
-      "editor.fontFamily": "JetBrains Mono",
-      "editor.fontLigatures": true,
-      "terminal.integrated.fontFamily": "JetBrains Mono",
-      "debug.console.fontFamily": "JetBrains Mono"
+    "name": "atom-one-dark",
+    "displayName": "Atom One Dark for VSCode",
+    "publisher": "elson1608",
+    "version": "0.5.0",
+    "engines": {
+        "vscode": "^1.92.0"
     },
-    "commands": [
-      {
-        "command": "theme.applyRecommendedFont",
-        "title": "Apply Theme's Recommended Font"
-      }
-    ]
-  }
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/elson1608/Atom-One-Dark.git"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "themes": [
+            {
+                "label": "Atom One Dark",
+                "uiTheme": "vs-dark",
+                "path": "./themes/atom-one-dark.json"
+            }
+        ],
+        "configurationDefaults": {
+            "editor.fontFamily": "JetBrains Mono",
+            "editor.fontLigatures": true,
+            "terminal.integrated.fontFamily": "JetBrains Mono",
+            "debug.console.fontFamily": "JetBrains Mono"
+        },
+        "commands": [
+            {
+                "command": "theme.applyRecommendedFont",
+                "title": "Apply Theme's Recommended Font"
+            }
+        ]
+    },
+    "license": "MIT"
 }

@@ -1,0 +1,9 @@
+.vscode/**
+.git/**
+.gitignore
+
+themes/_atom-one-dark.json
+
+*.vsix
+
+node_modules/**

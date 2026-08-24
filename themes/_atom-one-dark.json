@@ -1,0 +1,541 @@
+{
+    "$schema": "vscode://schemas/color-theme",
+    "name": "Atom One Dark",
+    "type": "dark",
+    "semanticHighlighting": true,
+
+    "colors": {
+        "activityBar.activeBorder": "#0078D4",
+        "activityBar.background": "#181818",
+        "activityBar.border": "#2B2B2B",
+        "activityBar.foreground": "#D7D7D7",
+        "activityBar.inactiveForeground": "#868686",
+        "activityBarBadge.background": "#0078D4",
+        "activityBarBadge.foreground": "#FFFFFF",
+        "badge.background": "#616161",
+        "badge.foreground": "#F8F8F8",
+        "button.background": "#0078D4",
+        "button.border": "#FFFFFF12",
+        "button.foreground": "#FFFFFF",
+        "button.hoverBackground": "#026EC1",
+        "button.secondaryBackground": "#313131",
+        "button.secondaryForeground": "#CCCCCC",
+        "button.secondaryHoverBackground": "#3C3C3C",
+        "chat.slashCommandBackground": "#26477866",
+        "chat.slashCommandForeground": "#85B6FF",
+        "chat.editedFileForeground": "#E2C08D",
+        "checkbox.background": "#313131",
+        "checkbox.border": "#3C3C3C",
+        "debugToolBar.background": "#181818",
+        "descriptionForeground": "#9D9D9D",
+        "dropdown.background": "#313131",
+        "dropdown.border": "#3C3C3C",
+        "dropdown.foreground": "#CCCCCC",
+        "dropdown.listBackground": "#1F1F1F",
+        "editor.background": "#1F1F1F",
+        "editor.findMatchBackground": "#9E6A03",
+        "editor.foreground": "#CCCCCC",
+        "editorGroup.border": "#FFFFFF17",
+        "editorGroupHeader.tabsBackground": "#181818",
+        "editorGroupHeader.tabsBorder": "#2B2B2B",
+        "editorGutter.addedBackground": "#2EA043",
+        "editorGutter.deletedBackground": "#F85149",
+        "editorGutter.modifiedBackground": "#0078D4",
+        "editorLineNumber.activeForeground": "#CCCCCC",
+        "editorLineNumber.foreground": "#6E7681",
+        "editorOverviewRuler.border": "#010409",
+        "editorWidget.background": "#202020",
+        "errorForeground": "#F85149",
+        "focusBorder": "#0078D4",
+        "foreground": "#CCCCCC",
+        "icon.foreground": "#CCCCCC",
+        "input.background": "#313131",
+        "input.border": "#3C3C3C",
+        "input.foreground": "#CCCCCC",
+        "input.placeholderForeground": "#989898",
+        "inputOption.activeBackground": "#2489DB82",
+        "inputOption.activeBorder": "#2488DB",
+        "keybindingLabel.foreground": "#CCCCCC",
+        "menu.background": "#1F1F1F",
+        "menu.selectionBackground": "#0078d4",
+        "notificationCenterHeader.background": "#1F1F1F",
+        "notificationCenterHeader.foreground": "#CCCCCC",
+        "notifications.background": "#1F1F1F",
+        "notifications.border": "#2B2B2B",
+        "notifications.foreground": "#CCCCCC",
+        "panel.background": "#181818",
+        "panel.border": "#2B2B2B",
+        "panelInput.border": "#2B2B2B",
+        "panelTitle.activeBorder": "#0078D4",
+        "panelTitle.activeForeground": "#CCCCCC",
+        "panelTitle.inactiveForeground": "#9D9D9D",
+        "peekViewEditor.background": "#1F1F1F",
+        "peekViewEditor.matchHighlightBackground": "#BB800966",
+        "peekViewResult.background": "#1F1F1F",
+        "peekViewResult.matchHighlightBackground": "#BB800966",
+        "pickerGroup.border": "#3C3C3C",
+        "progressBar.background": "#0078D4",
+        "quickInput.background": "#222222",
+        "quickInput.foreground": "#CCCCCC",
+        "settings.dropdownBackground": "#313131",
+        "settings.dropdownBorder": "#3C3C3C",
+        "settings.headerForeground": "#FFFFFF",
+        "settings.modifiedItemIndicator": "#BB800966",
+        "sideBar.background": "#181818",
+        "sideBar.border": "#2B2B2B",
+        "sideBar.foreground": "#CCCCCC",
+        "sideBarSectionHeader.background": "#181818",
+        "sideBarSectionHeader.border": "#2B2B2B",
+        "sideBarSectionHeader.foreground": "#CCCCCC",
+        "sideBarTitle.foreground": "#CCCCCC",
+        "statusBar.background": "#181818",
+        "statusBar.border": "#2B2B2B",
+        "statusBarItem.hoverBackground": "#F1F1F133",
+        "statusBarItem.hoverForeground": "#FFFFFF",
+        "statusBar.debuggingBackground": "#0078D4",
+        "statusBar.debuggingForeground": "#FFFFFF",
+        "statusBar.focusBorder": "#0078D4",
+        "statusBar.foreground": "#CCCCCC",
+        "statusBar.noFolderBackground": "#1F1F1F",
+        "statusBarItem.focusBorder": "#0078D4",
+        "statusBarItem.prominentBackground": "#6E768166",
+        "statusBarItem.remoteBackground": "#0078D4",
+        "statusBarItem.remoteForeground": "#FFFFFF",
+        "tab.activeBackground": "#1F1F1F",
+        "tab.activeBorder": "#1F1F1F",
+        "tab.activeBorderTop": "#0078D4",
+        "tab.activeForeground": "#FFFFFF",
+        "tab.selectedBorderTop": "#6caddf",
+        "tab.border": "#2B2B2B",
+        "tab.hoverBackground": "#1F1F1F",
+        "tab.inactiveBackground": "#181818",
+        "tab.inactiveForeground": "#9D9D9D",
+        "tab.unfocusedActiveBorder": "#1F1F1F",
+        "tab.unfocusedActiveBorderTop": "#2B2B2B",
+        "tab.unfocusedHoverBackground": "#1F1F1F",
+        "terminal.foreground": "#aab2be",
+        "terminal.tab.activeBorder": "#0078D4",
+        "textBlockQuote.background": "#2B2B2B",
+        "textBlockQuote.border": "#616161",
+        "textCodeBlock.background": "#2B2B2B",
+        "textLink.activeForeground": "#4daafc",
+        "textLink.foreground": "#4daafc",
+        "textPreformat.foreground": "#D0D0D0",
+        "textPreformat.background": "#3C3C3C",
+        "textSeparator.foreground": "#21262D",
+        "titleBar.activeBackground": "#181818",
+        "titleBar.activeForeground": "#CCCCCC",
+        "titleBar.border": "#2B2B2B",
+        "titleBar.inactiveBackground": "#1F1F1F",
+        "titleBar.inactiveForeground": "#9D9D9D",
+        "welcomePage.tileBackground": "#2B2B2B",
+        "welcomePage.progress.foreground": "#0078D4",
+        "widget.border": "#313131",
+        "terminal.ansiWhite": "#aab2be",
+        "terminal.ansiBrightWhite": "#aab2be",
+        "terminal.ansiYellow": "#e4c17b",
+        "terminal.ansiBrightYellow": "#60aeef",
+        "terminal.ansiBrightRed": "#e16c74",
+        "terminal.ansiGreen": "#99c378",
+        "terminal.ansiBrightMagenta": "#c679dc",
+        "terminal.ansiBrightCyan": "#56b6c2",
+        "terminal.ansiCyan": "#56b6c2"
+    },
+
+    "semanticTokenColors": {
+        "namespace": "#aab2be",
+        "variable": "#aab2be",
+        "property": "#aab2be",
+
+        "parameter": "#ce9057",
+        "parameter.declaration": "#ce9057",
+
+        "function": "#61afef",
+        "method": "#60aeef",
+
+        "type": "#e4c17b",
+        "class": "#e4c17b",
+        "interface": "#e4c17b",
+        "enum": "#e4c17b",
+        "struct": "#e4c17b",
+        "enumMember": "#e4c17b",
+
+        "typeParameter": "#c679dc",
+
+        "type.defaultLibrary": "#56b6c2",
+        "class.defaultLibrary": "#56b6c2",
+        "function.defaultLibrary": "#c679dc",
+
+        "keyword": {
+            "foreground": "#c778dc",
+            "italic": true
+        },
+
+        "operator": "#aab2be",
+
+        "comment": "#5d6371",
+        "string": "#99c378",
+        "number": "#ce9057",
+
+        "decorator": "#e4c17b",
+
+        "module.typeHint": "#e4c17b",
+        "type.typeHint": "#e4c17b",
+        "class.typeHint": "#e4c17b",
+        "typeParameter.typeHint": "#c679dc",
+        "class.typeHint.builtin": "#56B6C2",
+
+        "selfParameter": {
+            "foreground": "#c679dc",
+            "italic": true
+        },
+        "selfParameter.declaration": {
+            "foreground": "#c679dc",
+            "italic": true
+        },
+
+        "module": "#aab2be",
+        "pol": "#aab2be",
+        "pol.math": "#c679dc",
+        "punct": "#aab2be",
+        "function.typst": "#60aeef"
+    },
+
+    "tokenColors": [
+        {
+            "name": "Generic keywords and storage modifiers",
+            "scope": [
+                "keyword",
+                "storage.modifier"
+            ],
+            "settings": {
+                "foreground": "#c778dc",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "name": "Generic functions",
+            "scope": [
+                "entity.name.function"
+            ],
+            "settings": {
+                "foreground": "#61afef"
+            }
+        },
+        {
+            "name": "Generic types and classes",
+            "scope": [
+                "entity.name.type"
+            ],
+            "settings": {
+                "foreground": "#e4c17b"
+            }
+        },
+        {
+            "name": "Generic parameters",
+            "scope": [
+                "variable.parameter"
+            ],
+            "settings": {
+                "foreground": "#ce9057"
+            }
+        },
+        {
+            "name": "Generic language constants",
+            "scope": [
+                "constant.language"
+            ],
+            "settings": {
+                "foreground": "#ce9057"
+            }
+        },
+        {
+            "name": "Generic builtins",
+            "scope": [
+                "support.function",
+                "support.type",
+                "support.class",
+                "support.constant"
+            ],
+            "settings": {
+                "foreground": "#56b6c2"
+            }
+        },
+        {
+            "name": "Generic escapes",
+            "scope": [
+                "constant.character.escape"
+            ],
+            "settings": {
+                "foreground": "#56b6c2"
+            }
+        },
+        {
+            "name": "Generic operators and punctuation",
+            "scope": [
+                "keyword.operator",
+                "punctuation"
+            ],
+            "settings": {
+                "foreground": "#aab2be"
+            }
+        },
+
+        {
+            "name": "Keywords / Control / Storage / Operators (core)",
+            "scope": [
+                "keyword.other.DDL.sql",
+                "keyword.other.DML.sql",
+                "keyword.other.DML.II.sql",
+                "keyword.other.DDL.create.sql",
+                "keyword.other.DDL.create.II.sql",
+                "keyword.other.data-integrity.sql",
+                "keyword.other.alias.sql",
+                "keyword.other.order.sql",
+                "keyword.control.sql",
+                "keyword.operator.sql",
+                "keyword.other.sql",
+                "storage.type",
+                "storage.modifier.sql",
+                "keyword.operator.accessor.typst",
+                "keyword.operator.word",
+                "keyword.operator.logical.python",
+                "keyword.operator.arithmetic",
+                "keyword.operator.hcl",
+                "constant.language.python",
+                "variable.language.special.self.python",
+                "variable.parameter.function.language.special.self.python",
+                "entity.name.type.terraform",
+                "entity.name.type.hcl",
+                "constant.language.boolean.typst",
+                "source.typst markup.math.typst meta.expr.call.typst entity.name.function.hash.typst",
+                "source.typst markup.math.typst entity.name.function.hash.typst",
+                "keyword.codetag.notation.python"
+            ],
+            "settings": {
+                "foreground": "#c778dc",
+                "fontStyle": "italic"
+            }
+        },
+        {
+            "name": "General punctuation, attributes, access, misc.",
+            "scope": [
+                "keyword.operator.assignment",
+                "meta.function-call",
+                "punctuation.separator.period.python",
+                "entity.other.inherited-class.python",
+                "punctuation.definition.parameters.begin.python",
+                "punctuation.definition.parameters.end.python",
+                "punctuation.separator.parameters.python",
+                "punctuation.separator.annotation.python",
+                "markup.bold",
+                "meta.indexed-name.python",
+                "punctuation.definition.arguments.begin.python",
+                "punctuation.definition.arguments.end.python",
+                "punctuation.separator.slice.python",
+                "punctuation.separator.element.python",
+                "punctuation.separator.arguments.python",
+                "punctuation.definition.list.begin.python",
+                "punctuation.definition.list.end.python",
+                "punctuation.parenthesis.begin.python",
+                "punctuation.parenthesis.end.python",
+                "punctuation.separator.colon.python",
+                "punctuation.section.function.begin.python",
+                "punctuation.definition.dict.begin.python",
+                "punctuation.definition.dict.end.python",
+                "variable.other.member.hcl",
+                "punctuation.section.brackets.begin.hcl",
+                "punctuation.section.brackets.end.hcl",
+                "punctuation.section.block.begin.hcl",
+                "punctuation.section.block.end.hcl",
+                "punctuation.section.braces.begin.hcl",
+                "punctuation.section.braces.end.hcl",
+                "meta.block.hcl",
+                "punctuation.separator.annotation.result.python",
+                "constant.other.caps.python",
+                "constant.other.ellipsis.python",
+                "support.variable.magic.python",
+                "variable.other.readwrite.terraform",
+                "variable.other.readwrite.hcl",
+                "invalid.deprecated.semicolon.python",
+                "variable.other.readwrite",
+                "variable.other.property",
+                "keyword.operator.arithmetic.python",
+                "keyword.operator.comparison.python",
+                "keyword.operator.bitwise.python",
+                "source.python",
+                "keyword.operator.accessor.typst",
+                "meta.brace.round.typst",
+                "source.typst"
+            ],
+            "settings": {
+                "foreground": "#aab2be"
+            }
+        },
+        {
+            "name": "Comments",
+            "scope": [
+                "comment",
+                "punctuation.definition.comment"
+            ],
+            "settings": {
+                "foreground": "#5d6371"
+            }
+        },
+        {
+            "name": "Member function names",
+            "scope": [
+                "entity.name.function.member",
+                "entity.name.function.typst",
+                "entity.name.function.hash.typst",
+                "punctuation.definition.heading.typst",
+                "markup.heading.typst"
+            ],
+            "settings": {
+                "foreground": "#60aeef"
+            }
+        },
+        {
+            "name": "Parameters / JSON constants / Math blocks / Codetags",
+            "scope": [
+                "variable.parameter.function-call.python",
+                "constant.language.json.comments",
+                "constant.language.json",
+                "meta.math.block.tex",
+                "meta.function.environment.math.latex",
+                "support.class.math.block.environment.latex"
+            ],
+            "settings": {
+                "foreground": "#ce9057"
+            }
+        },
+        {
+            "name": "Strings",
+            "scope": [
+                "string",
+                "storage.type.string.python"
+            ],
+            "settings": {
+                "foreground": "#99c378"
+            }
+        },
+        {
+            "name": "Builtins / Types / Escapes / Format placeholders",
+            "scope": [
+                "constant.character.escape.python",
+                "support.function.builtin.python",
+                "support.type.python",
+                "constant.character.format.placeholder.other.python"
+            ],
+            "settings": {
+                "foreground": "#56b6c2"
+            }
+        },
+        {
+            "name": "Decorators / Classes / Parameter lists / Enum members",
+            "scope": [
+                "source.python meta.function.python meta.member.access.python meta.attribute.python",
+                "source.python meta.function.parameters.python meta.member.access.python meta.attribute.python",
+                "source.python meta.function.result-type.python meta.member.access.python meta.attribute.python",
+                "meta.function.parameters.python",
+                "entity.name.type.class.python",
+                "meta.function.decorator.python",
+                "punctuation.definition.decorator.python",
+                "entity.name.function.decorator.python",
+                "variable.other.enummember.hcl"
+            ],
+            "settings": {
+                "foreground": "#e4c17b"
+            }
+        },
+        {
+            "name": "Function calls and definitions",
+            "scope": [
+                "meta.function-call.generic.python",
+                "entity.name.function.python"
+            ],
+            "settings": {
+                "foreground": "#61afef"
+            }
+        },
+        {
+            "name": "JSON property names",
+            "scope": [
+                "support.type.property-name.json.comments",
+                "support.type.property-name.json"
+            ],
+            "settings": {
+                "foreground": "#e16c74"
+            }
+        },
+        {
+            "name": "TeX quoted string punctuation",
+            "scope": [
+                "punctuation.definition.string.begin.tex",
+                "punctuation.definition.string.end.tex"
+            ],
+            "settings": {
+                "foreground": "#84f318"
+            }
+        },
+        {
+            "name": "TeX math constants / escapes / newline",
+            "scope": [
+                "constant.other.general.math.tex",
+                "constant.character.escape.tex",
+                "constant.character.math.tex",
+                "keyword.control.equation.newline.latex"
+            ],
+            "settings": {
+                "foreground": "#61f385"
+            }
+        },
+        {
+            "name": "LaTeX functions / args",
+            "scope": [
+                "support.function.be.latex",
+                "meta.function.environment.math.latex",
+                "meta.function.begin-document.latex",
+                "variable.parameter.function.latex",
+                "punctuation.definition.arguments.begin.latex",
+                "punctuation.definition.arguments.end.latex"
+            ],
+            "settings": {
+                "foreground": "#a960f2"
+            }
+        },
+        {
+            "name": "LaTeX general commands",
+            "scope": [
+                "support.function.general.tex",
+                "constant.character.latex",
+                "keyword.control.newline.tex",
+                "keyword.other.item.latex",
+                "support.function.textbf.latex",
+                "keyword.control.preamble.latex"
+            ],
+            "settings": {
+                "foreground": "#61ccf2"
+            }
+        },
+        {
+            "name": "LaTeX equation align control",
+            "scope": [
+                "keyword.control.equation.align.latex"
+            ],
+            "settings": {
+                "foreground": "#194ef3"
+            }
+        },
+        {
+            "name": "Numbers",
+            "scope": [
+                "constant.numeric",
+                "constant.language.numeric"
+            ],
+            "settings": {
+                "foreground": "#ce9057"
+            }
+        }
+    ]
+}
