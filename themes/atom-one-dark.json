@@ -156,10 +156,7 @@
         "welcomePage.progress.foreground": "#0078D4"
     },
     "semanticTokenColors": {
-        "namespace": "#e5c07b",
-        "module": "#e5c07b",
         "type": "#e5c07b",
-        "class": "#e5c07b",
         "interface": "#e5c07b",
         "struct": "#e5c07b",
         "enum": "#e5c07b",
@@ -167,7 +164,6 @@
         "function": "#61afef",
         "method": "#61afef",
         "parameter": "#d19a66",
-        "property": "#e06c75",
         "variable": "#abb2bf",
         "enumMember": "#98c379",
         "event": "#e06c75",
@@ -181,7 +177,6 @@
         "decorator": "#e5c07b",
         "label": "#c678dd",
         "macro": "#e06c75",
-        "property.static": "#e06c75",
         "method.static": "#61afef",
         "function.static": "#61afef",
         "selfParameter:python": "#c678dd",
@@ -190,12 +185,8 @@
         "function.defaultLibrary:python": "#56b6c2",
         "method.defaultLibrary:python": "#56b6c2",
         "variable.defaultLibrary:python": "#56b6c2",
-        "class.defaultLibrary:python": "#61afef",
+        "class.defaultLibrary:python": "#56b6c2",
         "type.defaultLibrary:python": "#56b6c2",
-        "namespace:javascript": "#e5c07b",
-        "namespace:typescript": "#e5c07b",
-        "namespace:javascriptreact": "#e5c07b",
-        "namespace:typescriptreact": "#e5c07b",
         "parameter:go": "#d19a66",
         "function.defaultLibrary:go": "#61afef",
         "type.defaultLibrary:go": "#e5c07b",
@@ -206,7 +197,7 @@
         "selfParameter:rust": "#c678dd",
         "enumMember:kotlin": "#d19a66",
         "typeParameter:kotlin": "#e5c07b",
-        "class.builtin:python": "#61afef",
+        "class.builtin:python": "#56b6c2",
         "class.typeHint:python": "#e5c07b",
         "class.typeHint.builtin:python": "#e5c07b",
         "type.typeHint:python": "#e5c07b",
@@ -216,34 +207,41 @@
         "class.declaration:python": "#e5c07b",
         "type.declaration:python": "#e5c07b",
         "variable.typeHint:python": "#e5c07b",
-        "class.defaultLibrary:typescript": "#e5c07b",
         "interface.defaultLibrary:typescript": "#e5c07b",
         "type.defaultLibrary:typescript": "#e5c07b",
         "typeParameter.defaultLibrary:typescript": "#e5c07b",
         "function.defaultLibrary:typescript": "#61afef",
         "method.defaultLibrary:typescript": "#61afef",
         "variable.defaultLibrary:typescript": "#e06c75",
-        "class.defaultLibrary:typescriptreact": "#e5c07b",
         "interface.defaultLibrary:typescriptreact": "#e5c07b",
         "type.defaultLibrary:typescriptreact": "#e5c07b",
         "typeParameter.defaultLibrary:typescriptreact": "#e5c07b",
         "function.defaultLibrary:typescriptreact": "#61afef",
         "method.defaultLibrary:typescriptreact": "#61afef",
         "variable.defaultLibrary:typescriptreact": "#e06c75",
-        "class.defaultLibrary:javascript": "#e5c07b",
         "interface.defaultLibrary:javascript": "#e5c07b",
         "type.defaultLibrary:javascript": "#e5c07b",
         "typeParameter.defaultLibrary:javascript": "#e5c07b",
         "function.defaultLibrary:javascript": "#61afef",
         "method.defaultLibrary:javascript": "#61afef",
         "variable.defaultLibrary:javascript": "#e06c75",
-        "class.defaultLibrary:javascriptreact": "#e5c07b",
         "interface.defaultLibrary:javascriptreact": "#e5c07b",
         "type.defaultLibrary:javascriptreact": "#e5c07b",
         "typeParameter.defaultLibrary:javascriptreact": "#e5c07b",
         "function.defaultLibrary:javascriptreact": "#61afef",
         "method.defaultLibrary:javascriptreact": "#61afef",
-        "variable.defaultLibrary:javascriptreact": "#e06c75"
+        "variable.defaultLibrary:javascriptreact": "#e06c75",
+        "class.declaration": "#e5c07b",
+        "namespace.declaration": "#e5c07b",
+        "module.declaration": "#e5c07b",
+        "property:javascript": "#e06c75",
+        "property.static:javascript": "#e06c75",
+        "property:typescript": "#e06c75",
+        "property.static:typescript": "#e06c75",
+        "property:javascriptreact": "#e06c75",
+        "property.static:javascriptreact": "#e06c75",
+        "property:typescriptreact": "#e06c75",
+        "property.static:typescriptreact": "#e06c75"
     },
     "tokenColors": [
         {
@@ -578,10 +576,7 @@
                 "entity.name.namespace.js",
                 "entity.name.namespace.ts",
                 "entity.name.namespace.tsx",
-                "entity.name.namespace.jsx",
-                "support.module.node",
-                "variable.other.readwrite.alias.js",
-                "variable.other.readwrite.alias.ts"
+                "entity.name.namespace.jsx"
             ],
             "settings": {
                 "foreground": "#e5c07b"
@@ -1885,17 +1880,6 @@
             }
         },
         {
-            "name": "Python builtin exception call targets",
-            "scope": [
-                "meta.function-call.generic.python support.type.exception.python",
-                "meta.function-call.python support.type.exception.python"
-            ],
-            "settings": {
-                "foreground": "#61afef",
-                "fontStyle": ""
-            }
-        },
-        {
             "name": "TypeScript boolean and null literals",
             "scope": [
                 "constant.language.boolean.true.ts",
@@ -1913,6 +1897,115 @@
             ],
             "settings": {
                 "foreground": "#c678dd",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "JS/TS imported aliases",
+            "scope": [
+                "variable.other.readwrite.alias.js",
+                "variable.other.readwrite.alias.jsx",
+                "variable.other.readwrite.alias.ts",
+                "variable.other.readwrite.alias.tsx",
+                "meta.import.js variable.other.readwrite",
+                "meta.import.jsx variable.other.readwrite",
+                "meta.import.ts variable.other.readwrite",
+                "meta.import.tsx variable.other.readwrite"
+            ],
+            "settings": {
+                "foreground": "#abb2bf",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "JS/TS constructor calls",
+            "scope": [
+                "new.expr.js entity.name.function.js",
+                "new.expr.jsx entity.name.function.jsx",
+                "new.expr.ts entity.name.function.ts",
+                "new.expr.tsx entity.name.function.tsx",
+                "new.expr.js entity.name.type.js",
+                "new.expr.jsx entity.name.type.jsx",
+                "new.expr.ts entity.name.type.ts",
+                "new.expr.tsx entity.name.type.tsx",
+                "new.expr.js entity.name.class.js",
+                "new.expr.jsx entity.name.class.jsx",
+                "new.expr.ts entity.name.class.ts",
+                "new.expr.tsx entity.name.class.tsx"
+            ],
+            "settings": {
+                "foreground": "#61afef",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python attribute access",
+            "scope": [
+                "meta.member.access.python meta.attribute.python"
+            ],
+            "settings": {
+                "foreground": "#abb2bf",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python member method calls",
+            "scope": [
+                "meta.member.access.python meta.function-call.python",
+                "meta.member.access.python meta.function-call.generic.python"
+            ],
+            "settings": {
+                "foreground": "#61afef",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python builtin and support calls",
+            "scope": [
+                "support.function.builtin.python",
+                "support.type.python",
+                "support.class.python",
+                "meta.function-call.generic.python support.function.builtin.python",
+                "meta.function-call.python support.function.builtin.python",
+                "meta.function-call.generic.python support.type.python",
+                "meta.function-call.python support.type.python",
+                "meta.function-call.generic.python support.class.python",
+                "meta.function-call.python support.class.python"
+            ],
+            "settings": {
+                "foreground": "#56b6c2",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "SQL keywords and database-code keywords",
+            "scope": [
+                "keyword.other.sql",
+                "keyword.control.sql",
+                "keyword.other.create.sql",
+                "keyword.other.table.sql",
+                "keyword.other.DDL.sql",
+                "keyword.other.DML.sql",
+                "storage.type.sql",
+                "storage.modifier.sql",
+                "source.sql keyword.other",
+                "source.sql keyword.control",
+                "source.sql storage.type",
+                "source.sql storage.modifier"
+            ],
+            "settings": {
+                "foreground": "#c678dd",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python builtin exception call targets",
+            "scope": [
+                "meta.function-call.generic.python support.type.exception.python",
+                "meta.function-call.python support.type.exception.python"
+            ],
+            "settings": {
+                "foreground": "#61afef",
                 "fontStyle": ""
             }
         }
