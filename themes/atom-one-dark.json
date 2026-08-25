@@ -159,7 +159,6 @@
         "type": "#e5c07b",
         "interface": "#e5c07b",
         "struct": "#e5c07b",
-        "enum": "#e5c07b",
         "typeParameter": "#e5c07b",
         "function": "#61afef",
         "method": "#61afef",
@@ -241,7 +240,11 @@
         "property:javascriptreact": "#e06c75",
         "property.static:javascriptreact": "#e06c75",
         "property:typescriptreact": "#e06c75",
-        "property.static:typescriptreact": "#e06c75"
+        "property.static:typescriptreact": "#e06c75",
+        "enum": "#abb2bf",
+        "enum.declaration": "#e5c07b",
+        "enum:python": "#abb2bf",
+        "enum.declaration:python": "#e5c07b"
     },
     "tokenColors": [
         {
@@ -1992,6 +1995,83 @@
                 "source.sql keyword.control",
                 "source.sql storage.type",
                 "source.sql storage.modifier"
+            ],
+            "settings": {
+                "foreground": "#c678dd",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python attribute and field access",
+            "scope": [
+                "meta.member.access.python variable.other.property",
+                "meta.member.access.python variable.other.property.python",
+                "meta.member.access.python variable.other.member",
+                "meta.member.access.python variable.other.member.python",
+                "meta.member.access.python variable.other.field",
+                "meta.member.access.python variable.other.field.python",
+                "meta.attribute.python variable.other.property",
+                "meta.attribute.python variable.other.property.python",
+                "meta.attribute.python variable.other.member",
+                "meta.attribute.python variable.other.member.python"
+            ],
+            "settings": {
+                "foreground": "#abb2bf",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python constructor calls",
+            "scope": [
+                "meta.function-call.python entity.name.type.class",
+                "meta.function-call.python entity.name.type.class.python",
+                "meta.function-call.generic.python entity.name.type.class",
+                "meta.function-call.generic.python entity.name.type.class.python",
+                "meta.function.call.python entity.name.type.class",
+                "meta.function.call.python entity.name.type.class.python",
+                "meta.function.call.generic.python entity.name.type.class",
+                "meta.function.call.generic.python entity.name.type.class.python"
+            ],
+            "settings": {
+                "foreground": "#61afef",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python language constants",
+            "scope": [
+                "constant.language.python"
+            ],
+            "settings": {
+                "foreground": "#c678dd",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python builtin support names",
+            "scope": [
+                "support.function.python",
+                "support.function.builtin.python",
+                "support.type.python",
+                "support.class.python",
+                "meta.function-call.python support.function.python",
+                "meta.function-call.generic.python support.function.python",
+                "meta.function-call.python support.function.builtin.python",
+                "meta.function-call.generic.python support.function.builtin.python",
+                "meta.function-call.python support.type.python",
+                "meta.function-call.generic.python support.type.python",
+                "meta.function-call.python support.class.python",
+                "meta.function-call.generic.python support.class.python"
+            ],
+            "settings": {
+                "foreground": "#56b6c2",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "SQL dbcode keywords",
+            "scope": [
+                "source.sql.dbcode"
             ],
             "settings": {
                 "foreground": "#c678dd",
