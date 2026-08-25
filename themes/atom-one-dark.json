@@ -1974,16 +1974,6 @@
             }
         },
         {
-            "name": "SQL injected dbcode keywords",
-            "scope": [
-                "keyword.other.dbcode.one-dark"
-            ],
-            "settings": {
-                "foreground": "#c678dd",
-                "fontStyle": ""
-            }
-        },
-        {
             "name": "Python builtin exception call targets",
             "scope": [
                 "meta.function-call.generic.python support.type.exception.python",

@@ -2,7 +2,7 @@
     "name": "atom-one-dark",
     "displayName": "Atom One Dark for VSCode",
     "publisher": "elson1608",
-    "version": "0.8.9",
+    "version": "0.8.8",
     "engines": {
         "vscode": "^1.92.0"
     },
@@ -25,16 +25,6 @@
                 "path": "./themes/atom-one-dark.json"
             }
         ],
-        "grammars": [
-            {
-                "scopeName": "source.sql.dbcode.one-dark-injection",
-                "path": "./syntaxes/sql-dbcode-injection.tmLanguage.json",
-                "injectTo": [
-                    "source.sql",
-                    "source.sql.dbcode"
-                ]
-            }
-        ],
         "configurationDefaults": {
             "editor.fontFamily": "JetBrains Mono",
             "editor.fontLigatures": true,
@@ -42,6 +32,9 @@
             "debug.console.fontFamily": "JetBrains Mono",
             "[python]": {
                 "editor.semanticHighlighting.enabled": false
+            },
+            "[sql]": {
+                "editor.semanticHighlighting.enabled": true
             }
         },
         "commands": [

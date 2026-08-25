@@ -1,23 +1,14 @@
 const vscode = require("vscode")
 
-const {
-    POSTGRES_HIGHLIGHT_WORDS
-} = require("./generated/postgres-words")
-
 const UNUSED_COLOR = "#7f8591"
 const PARAMETER_COLOR = "#d19a66"
-const SQL_KEYWORD_COLOR = "#c678dd"
-
 const PARAMETER_UPDATE_DELAY_MS = 150
-const SQL_UPDATE_DELAY_MS = 100
 
 let unusedDecoration
 let parameterDecoration
-let sqlKeywordDecoration
 
 const parameterUpdateTimers = new Map()
 const parameterRequestVersions = new Map()
-const sqlUpdateTimers = new Map()
 
 function getDiagnosticCode(diagnostic) {
     if (
@@ -38,15 +29,21 @@ function getDiagnosticCode(diagnostic) {
 }
 
 function isUnusedDiagnostic(diagnostic) {
-    const source = (diagnostic.source ?? "").toLowerCase()
-    const code = getDiagnosticCode(diagnostic).toLowerCase()
+    const source =
+        (diagnostic.source ?? "").toLowerCase()
+
+    const code =
+        getDiagnosticCode(diagnostic).toLowerCase()
 
     if (source === "eslint") {
         return (
             code === "no-unused-vars" ||
-            code === "@typescript-eslint/no-unused-vars" ||
-            code === "no-unused-private-class-members" ||
-            code === "@typescript-eslint/no-unused-private-class-members"
+            code ===
+                "@typescript-eslint/no-unused-vars" ||
+            code ===
+                "no-unused-private-class-members" ||
+            code ===
+                "@typescript-eslint/no-unused-private-class-members"
         )
     }
 
@@ -80,7 +77,10 @@ function updateUnusedDecoration(editor) {
 }
 
 function rangesOverlap(first, second) {
-    return first.intersection(second) !== undefined
+    return (
+        first.intersection(second) !==
+        undefined
+    )
 }
 
 async function updatePythonParameters(editor) {
@@ -89,7 +89,11 @@ async function updatePythonParameters(editor) {
     }
 
     if (editor.document.languageId !== "python") {
-        editor.setDecorations(parameterDecoration, [])
+        editor.setDecorations(
+            parameterDecoration,
+            []
+        )
+
         return
     }
 
@@ -99,7 +103,11 @@ async function updatePythonParameters(editor) {
     const documentVersion = document.version
 
     const requestVersion =
-        (parameterRequestVersions.get(uriKey) ?? 0) + 1
+        (
+            parameterRequestVersions.get(
+                uriKey
+            ) ?? 0
+        ) + 1
 
     parameterRequestVersions.set(
         uriKey,
@@ -110,35 +118,52 @@ async function updatePythonParameters(editor) {
     let tokens
 
     try {
-        ;[legend, tokens] = await Promise.all([
-            vscode.commands.executeCommand(
-                "vscode.provideDocumentSemanticTokensLegend",
-                uri
-            ),
-            vscode.commands.executeCommand(
-                "vscode.provideDocumentSemanticTokens",
-                uri
-            )
-        ])
+        ;[legend, tokens] =
+            await Promise.all([
+                vscode.commands.executeCommand(
+                    "vscode.provideDocumentSemanticTokensLegend",
+                    uri
+                ),
+                vscode.commands.executeCommand(
+                    "vscode.provideDocumentSemanticTokens",
+                    uri
+                )
+            ])
     } catch {
-        editor.setDecorations(parameterDecoration, [])
+        editor.setDecorations(
+            parameterDecoration,
+            []
+        )
+
         return
     }
 
     if (
-        parameterRequestVersions.get(uriKey) !==
-            requestVersion ||
-        editor.document.version !== documentVersion
+        parameterRequestVersions.get(
+            uriKey
+        ) !== requestVersion ||
+        editor.document.version !==
+            documentVersion
     ) {
         return
     }
 
-    if (!legend || !tokens || !tokens.data) {
-        editor.setDecorations(parameterDecoration, [])
+    if (
+        !legend ||
+        !tokens ||
+        !tokens.data
+    ) {
+        editor.setDecorations(
+            parameterDecoration,
+            []
+        )
+
         return
     }
 
-    const unusedRanges = getUnusedRanges(document)
+    const unusedRanges =
+        getUnusedRanges(document)
+
     const ranges = []
 
     let line = 0
@@ -149,10 +174,17 @@ async function updatePythonParameters(editor) {
         i < tokens.data.length
         i += 5
     ) {
-        const deltaLine = tokens.data[i]
-        const deltaStart = tokens.data[i + 1]
-        const length = tokens.data[i + 2]
-        const tokenTypeIndex = tokens.data[i + 3]
+        const deltaLine =
+            tokens.data[i]
+
+        const deltaStart =
+            tokens.data[i + 1]
+
+        const length =
+            tokens.data[i + 2]
+
+        const tokenTypeIndex =
+            tokens.data[i + 3]
 
         if (deltaLine === 0) {
             character += deltaStart
@@ -162,26 +194,30 @@ async function updatePythonParameters(editor) {
         }
 
         if (
-            legend.tokenTypes[tokenTypeIndex] !==
-            "parameter"
+            legend.tokenTypes[
+                tokenTypeIndex
+            ] !== "parameter"
         ) {
             continue
         }
 
-        const range = new vscode.Range(
-            line,
-            character,
-            line,
-            character + length
-        )
+        const range =
+            new vscode.Range(
+                line,
+                character,
+                line,
+                character + length
+            )
 
-        // Unused gray wins over normal parameter orange.
+        // Unused gray has priority
+        // over normal parameter orange.
         if (
-            unusedRanges.some(unusedRange =>
-                rangesOverlap(
-                    range,
-                    unusedRange
-                )
+            unusedRanges.some(
+                unusedRange =>
+                    rangesOverlap(
+                        range,
+                        unusedRange
+                    )
             )
         ) {
             continue
@@ -196,7 +232,9 @@ async function updatePythonParameters(editor) {
     )
 }
 
-function schedulePythonParameterUpdate(editor) {
+function schedulePythonParameterUpdate(
+    editor
+) {
     if (!editor) {
         return
     }
@@ -205,238 +243,28 @@ function schedulePythonParameterUpdate(editor) {
         editor.document.uri.toString()
 
     const existingTimer =
-        parameterUpdateTimers.get(uriKey)
+        parameterUpdateTimers.get(
+            uriKey
+        )
 
     if (existingTimer) {
         clearTimeout(existingTimer)
     }
 
-    const timer = setTimeout(() => {
-        parameterUpdateTimers.delete(uriKey)
+    const timer = setTimeout(
+        () => {
+            parameterUpdateTimers.delete(
+                uriKey
+            )
 
-        void updatePythonParameters(editor)
-    }, PARAMETER_UPDATE_DELAY_MS)
+            void updatePythonParameters(
+                editor
+            )
+        },
+        PARAMETER_UPDATE_DELAY_MS
+    )
 
     parameterUpdateTimers.set(
-        uriKey,
-        timer
-    )
-}
-
-function isSqlDocument(document) {
-    return [
-        "sql",
-        "pgsql",
-        "postgres",
-        "postgresql",
-        "dbcode"
-    ].includes(document.languageId)
-}
-
-function isIdentifierStart(character) {
-    return /[A-Za-z_]/.test(character)
-}
-
-function isIdentifierCharacter(character) {
-    return /[A-Za-z0-9_$]/.test(character)
-}
-
-function getPostgresKeywordRanges(document) {
-    const text = document.getText()
-    const ranges = []
-
-    let index = 0
-
-    while (index < text.length) {
-        const character = text[index]
-        const next = text[index + 1]
-
-        // -- line comment
-        if (character === "-" && next === "-") {
-            index += 2
-
-            while (
-                index < text.length &&
-                text[index] !== "\n"
-            ) {
-                index++
-            }
-
-            continue
-        }
-
-        // /* block comment */
-        if (character === "/" && next === "*") {
-            index += 2
-
-            while (index < text.length - 1) {
-                if (
-                    text[index] === "*" &&
-                    text[index + 1] === "/"
-                ) {
-                    index += 2
-                    break
-                }
-
-                index++
-            }
-
-            continue
-        }
-
-        // Single-quoted SQL string.
-        if (character === "'") {
-            index++
-
-            while (index < text.length) {
-                if (text[index] !== "'") {
-                    index++
-                    continue
-                }
-
-                // SQL escapes a quote as ''.
-                if (text[index + 1] === "'") {
-                    index += 2
-                    continue
-                }
-
-                index++
-                break
-            }
-
-            continue
-        }
-
-        // Double-quoted identifier.
-        if (character === '"') {
-            index++
-
-            while (index < text.length) {
-                if (text[index] !== '"') {
-                    index++
-                    continue
-                }
-
-                // Escaped identifier quote: ""
-                if (text[index + 1] === '"') {
-                    index += 2
-                    continue
-                }
-
-                index++
-                break
-            }
-
-            continue
-        }
-
-        // PostgreSQL dollar-quoted string.
-        if (character === "$") {
-            const remainingText = text.slice(index)
-
-            const delimiterMatch =
-                remainingText.match(
-                    /^\$[A-Za-z_][A-Za-z0-9_]*\$|^\$\$/
-                )
-
-            if (delimiterMatch) {
-                const delimiter = delimiterMatch[0]
-                const bodyStart =
-                    index + delimiter.length
-
-                const closingIndex =
-                    text.indexOf(
-                        delimiter,
-                        bodyStart
-                    )
-
-                if (closingIndex === -1) {
-                    break
-                }
-
-                index =
-                    closingIndex +
-                    delimiter.length
-
-                continue
-            }
-        }
-
-        if (!isIdentifierStart(character)) {
-            index++
-            continue
-        }
-
-        const start = index
-        index++
-
-        while (
-            index < text.length &&
-            isIdentifierCharacter(text[index])
-        ) {
-            index++
-        }
-
-        const word =
-            text.slice(start, index).toUpperCase()
-
-        if (!POSTGRES_HIGHLIGHT_WORDS.has(word)) {
-            continue
-        }
-
-        ranges.push(
-            new vscode.Range(
-                document.positionAt(start),
-                document.positionAt(index)
-            )
-        )
-    }
-
-    return ranges
-}
-
-function updateSqlKeywords(editor) {
-    if (!editor) {
-        return
-    }
-
-    if (!isSqlDocument(editor.document)) {
-        editor.setDecorations(
-            sqlKeywordDecoration,
-            []
-        )
-        return
-    }
-
-    editor.setDecorations(
-        sqlKeywordDecoration,
-        getPostgresKeywordRanges(
-            editor.document
-        )
-    )
-}
-
-function scheduleSqlUpdate(editor) {
-    if (!editor) {
-        return
-    }
-
-    const uriKey =
-        editor.document.uri.toString()
-
-    const existingTimer =
-        sqlUpdateTimers.get(uriKey)
-
-    if (existingTimer) {
-        clearTimeout(existingTimer)
-    }
-
-    const timer = setTimeout(() => {
-        sqlUpdateTimers.delete(uriKey)
-        updateSqlKeywords(editor)
-    }, SQL_UPDATE_DELAY_MS)
-
-    sqlUpdateTimers.set(
         uriKey,
         timer
     )
@@ -448,9 +276,7 @@ function updateEditor(editor) {
     }
 
     updateUnusedDecoration(editor)
-
     schedulePythonParameterUpdate(editor)
-    scheduleSqlUpdate(editor)
 }
 
 function updateAllEditors() {
@@ -464,64 +290,69 @@ function updateAllEditors() {
 
 function activate(context) {
     unusedDecoration =
-        vscode.window.createTextEditorDecorationType({
-            color: UNUSED_COLOR
-        })
+        vscode.window
+            .createTextEditorDecorationType({
+                color: UNUSED_COLOR
+            })
 
     parameterDecoration =
-        vscode.window.createTextEditorDecorationType({
-            color: PARAMETER_COLOR
-        })
-
-    sqlKeywordDecoration =
-        vscode.window.createTextEditorDecorationType({
-            color: SQL_KEYWORD_COLOR
-        })
+        vscode.window
+            .createTextEditorDecorationType({
+                color: PARAMETER_COLOR
+            })
 
     context.subscriptions.push(
         unusedDecoration,
         parameterDecoration,
-        sqlKeywordDecoration,
 
-        vscode.languages.onDidChangeDiagnostics(() => {
-            updateAllEditors()
-        }),
-
-        vscode.window.onDidChangeActiveTextEditor(
-            editor => {
-                updateEditor(editor)
-            }
-        ),
-
-        vscode.window.onDidChangeVisibleTextEditors(
-            () => {
-                updateAllEditors()
-            }
-        ),
-
-        vscode.workspace.onDidChangeTextDocument(
-            event => {
-                for (
-                    const editor of
-                    vscode.window.visibleTextEditors
-                ) {
-                    if (
-                        editor.document.uri.toString() !==
-                        event.document.uri.toString()
-                    ) {
-                        continue
-                    }
-
-                    updateUnusedDecoration(editor)
-
-                    schedulePythonParameterUpdate(
-                        editor
-                    )
-
-                    scheduleSqlUpdate(editor)
+        vscode.languages
+            .onDidChangeDiagnostics(
+                () => {
+                    updateAllEditors()
                 }
-            }
-        )
+            ),
+
+        vscode.window
+            .onDidChangeActiveTextEditor(
+                editor => {
+                    updateEditor(editor)
+                }
+            ),
+
+        vscode.window
+            .onDidChangeVisibleTextEditors(
+                () => {
+                    updateAllEditors()
+                }
+            ),
+
+        vscode.workspace
+            .onDidChangeTextDocument(
+                event => {
+                    for (
+                        const editor of
+                        vscode.window
+                            .visibleTextEditors
+                    ) {
+                        if (
+                            editor.document.uri
+                                .toString() !==
+                            event.document.uri
+                                .toString()
+                        ) {
+                            continue
+                        }
+
+                        updateUnusedDecoration(
+                            editor
+                        )
+
+                        schedulePythonParameterUpdate(
+                            editor
+                        )
+                    }
+                }
+            )
     )
 
     updateAllEditors()
@@ -535,20 +366,11 @@ function deactivate() {
         clearTimeout(timer)
     }
 
-    for (
-        const timer of
-        sqlUpdateTimers.values()
-    ) {
-        clearTimeout(timer)
-    }
-
     parameterUpdateTimers.clear()
     parameterRequestVersions.clear()
-    sqlUpdateTimers.clear()
 
     unusedDecoration?.dispose()
     parameterDecoration?.dispose()
-    sqlKeywordDecoration?.dispose()
 }
 
 module.exports = {
