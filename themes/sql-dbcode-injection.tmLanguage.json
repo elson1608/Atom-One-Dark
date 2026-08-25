@@ -1,0 +1,14 @@
+{
+    "scopeName": "source.sql.dbcode.one-dark-injection",
+    "injectionSelector": "L:source.sql.dbcode",
+    "patterns": [
+        {
+            "name": "keyword.other.dbcode.one-dark",
+            "match": "(?i)\\b(?:REPLACE|LANGUAGE|AFTER|EXECUTE)\\b"
+        },
+        {
+            "name": "keyword.other.dbcode.one-dark",
+            "match": "(?i)\\bFOR\\s+EACH\\s+ROW\\b"
+        }
+    ]
+}
