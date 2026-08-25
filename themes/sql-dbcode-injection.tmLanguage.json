@@ -1,6 +1,6 @@
 {
     "scopeName": "source.sql.dbcode.one-dark-injection",
-    "injectionSelector": "L:source.sql.dbcode",
+    "injectionSelector": "L:source.sql.dbcode -string -comment",
     "patterns": [
         {
             "name": "keyword.other.dbcode.one-dark",
