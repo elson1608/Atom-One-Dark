@@ -2,10 +2,13 @@ const vscode = require("vscode")
 
 const UNUSED_COLOR = "#7f8591"
 const PARAMETER_COLOR = "#d19a66"
+const SQL_IDENTIFIER_COLOR = "#abb2bf"
+
 const PARAMETER_UPDATE_DELAY_MS = 150
 
 let unusedDecoration
 let parameterDecoration
+let sqlNameDecoration
 
 const parameterUpdateTimers = new Map()
 const parameterRequestVersions = new Map()
@@ -78,8 +81,7 @@ function updateUnusedDecoration(editor) {
 
 function rangesOverlap(first, second) {
     return (
-        first.intersection(second) !==
-        undefined
+        first.intersection(second) !== undefined
     )
 }
 
@@ -169,11 +171,7 @@ async function updatePythonParameters(editor) {
     let line = 0
     let character = 0
 
-    for (
-        let i = 0
-        i < tokens.data.length
-        i += 5
-    ) {
+    for (let i = 0; i < tokens.data.length; i += 5) {
         const deltaLine =
             tokens.data[i]
 
@@ -270,12 +268,187 @@ function schedulePythonParameterUpdate(
     )
 }
 
+function getSqlNameRanges(document) {
+    if (document.languageId !== "sql") {
+        return []
+    }
+
+    const text = document.getText()
+    const ranges = []
+
+    let index = 0
+
+    while (index < text.length) {
+        const character = text[index]
+        const next = text[index + 1]
+
+        // -- line comment
+        if (
+            character === "-" &&
+            next === "-"
+        ) {
+            index += 2
+
+            while (
+                index < text.length &&
+                text[index] !== "\n"
+            ) {
+                index++
+            }
+
+            continue
+        }
+
+        // /* block comment */
+        if (
+            character === "/" &&
+            next === "*"
+        ) {
+            index += 2
+
+            let depth = 1
+
+            while (
+                index < text.length &&
+                depth > 0
+            ) {
+                if (
+                    text[index] === "/" &&
+                    text[index + 1] === "*"
+                ) {
+                    depth++
+                    index += 2
+                    continue
+                }
+
+                if (
+                    text[index] === "*" &&
+                    text[index + 1] === "/"
+                ) {
+                    depth--
+                    index += 2
+                    continue
+                }
+
+                index++
+            }
+
+            continue
+        }
+
+        // 'string'
+        if (character === "'") {
+            index++
+
+            while (index < text.length) {
+                if (text[index] !== "'") {
+                    index++
+                    continue
+                }
+
+                // Escaped quote: ''
+                if (text[index + 1] === "'") {
+                    index += 2
+                    continue
+                }
+
+                index++
+                break
+            }
+
+            continue
+        }
+
+        // "quoted identifier"
+        if (character === '"') {
+            index++
+
+            while (index < text.length) {
+                if (text[index] !== '"') {
+                    index++
+                    continue
+                }
+
+                // Escaped quote: ""
+                if (text[index + 1] === '"') {
+                    index += 2
+                    continue
+                }
+
+                index++
+                break
+            }
+
+            continue
+        }
+
+        const remaining =
+            text.slice(index)
+
+        const match =
+            remaining.match(
+                /^(name)\b/i
+            )
+
+        if (!match) {
+            index++
+            continue
+        }
+
+        const previous =
+            index > 0
+                ? text[index - 1]
+                : ""
+
+        // Make sure this is the start
+        // of an identifier.
+        if (
+            /[A-Za-z0-9_$]/.test(
+                previous
+            )
+        ) {
+            index++
+            continue
+        }
+
+        const start = index
+        const end =
+            index + match[0].length
+
+        ranges.push(
+            new vscode.Range(
+                document.positionAt(start),
+                document.positionAt(end)
+            )
+        )
+
+        index = end
+    }
+
+    return ranges
+}
+
+function updateSqlNameDecoration(editor) {
+    if (!editor) {
+        return
+    }
+
+    editor.setDecorations(
+        sqlNameDecoration,
+        getSqlNameRanges(
+            editor.document
+        )
+    )
+}
+
 function updateEditor(editor) {
     if (!editor) {
         return
     }
 
     updateUnusedDecoration(editor)
+    updateSqlNameDecoration(editor)
+
     schedulePythonParameterUpdate(editor)
 }
 
@@ -301,9 +474,16 @@ function activate(context) {
                 color: PARAMETER_COLOR
             })
 
+    sqlNameDecoration =
+        vscode.window
+            .createTextEditorDecorationType({
+                color: SQL_IDENTIFIER_COLOR
+            })
+
     context.subscriptions.push(
         unusedDecoration,
         parameterDecoration,
+        sqlNameDecoration,
 
         vscode.languages
             .onDidChangeDiagnostics(
@@ -347,6 +527,10 @@ function activate(context) {
                             editor
                         )
 
+                        updateSqlNameDecoration(
+                            editor
+                        )
+
                         schedulePythonParameterUpdate(
                             editor
                         )
@@ -371,6 +555,7 @@ function deactivate() {
 
     unusedDecoration?.dispose()
     parameterDecoration?.dispose()
+    sqlNameDecoration?.dispose()
 }
 
 module.exports = {
