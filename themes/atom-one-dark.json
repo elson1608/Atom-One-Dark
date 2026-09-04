@@ -1983,6 +1983,27 @@
                 "foreground": "#61afef",
                 "fontStyle": ""
             }
+        },
+        {
+            "name": "Python logical keywords",
+            "scope": [
+                "keyword.operator.logical.python"
+            ],
+            "settings": {
+                "foreground": "#c678dd",
+                "fontStyle": ""
+            }
+        },
+        {
+            "name": "Python self override",
+            "scope": [
+                "variable.language.special.self.python",
+                "variable.parameter.function.language.special.self.python"
+            ],
+            "settings": {
+                "foreground": "#c678dd",
+                "fontStyle": ""
+            }
         }
     ]
 }

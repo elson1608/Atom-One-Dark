@@ -2,7 +2,7 @@
     "name": "atom-one-dark",
     "displayName": "Atom One Dark for VSCode",
     "publisher": "elson1608",
-    "version": "0.8.12",
+    "version": "0.8.13",
     "engines": {
         "vscode": "^1.92.0"
     },
